@@ -1,3 +1,5 @@
+@import './_project-modal.scss';
+
 .projects__header-banner {
     padding: 1rem 0;
 }
@@ -31,6 +33,10 @@
         * {
             max-width: unset  !important;
         }
+    }
+
+    .cda-project-source {
+        display: none;
     }
 
     img {
