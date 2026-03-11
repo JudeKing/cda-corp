@@ -1,0 +1,88 @@
+.projects__header-banner {
+    padding: 1rem 0;
+}
+
+.projects__container-grid-1 {
+    .wp-block-query ul {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.5rem;
+
+        li {
+            margin-top: 0 !important;
+        }
+    }
+
+    /* rows with 1 item */
+    .wp-block-query ul > :nth-child(3n + 1) {
+        grid-column: span 2;
+    }
+}
+
+.projects__project {
+
+    .wp-block-cover__inner-container {
+        position: absolute;
+        bottom: 2rem;
+        left: 2rem;
+        width: 100%;
+        height: min-content;
+
+        * {
+            max-width: unset  !important;
+        }
+    }
+
+    img {
+        transition: 400ms ease-in-out;
+    }
+
+    .wp-block-button {
+        position: relative;
+        z-index:1;
+
+        &:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background: white;
+            transition: 300ms ease-in-out;
+            z-index: 0;
+        }
+
+        .wp-block-button__link {
+            transition: 200ms ease-in-out;
+            position: relative;
+            z-index: 2;
+        }
+
+        &:hover {
+            .wp-block-button__link {
+                border-color: white;
+                color: black;
+            }
+            
+            &:after {
+                width: 100%;
+            }
+        }
+    }
+
+    &:hover {
+        img {
+            transform: scale(1.05);
+        }
+
+
+    }
+}
+
+/*
+- Style the projects [x]
+- Hover transion on button [x]
+- Hover transition on image [x]
+- 
+*/

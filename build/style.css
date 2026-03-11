@@ -1,0 +1,86 @@
+/*!******************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[2]!./src/scss/style.scss ***!
+  \******************************************************************************************************************************************/
+.cda__container {
+  max-width: 1400px;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding: 0 2rem;
+  width: 100%;
+}
+
+.cda__container.cda__container-spacer {
+  margin-top: 10vh;
+}
+
+.projects__header-banner {
+  padding: 1rem 0;
+}
+
+.projects__container-grid-1 .wp-block-query ul {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.5rem;
+}
+.projects__container-grid-1 .wp-block-query ul li {
+  margin-top: 0 !important;
+}
+.projects__container-grid-1 {
+  /* rows with 1 item */
+}
+.projects__container-grid-1 .wp-block-query ul > :nth-child(3n+1) {
+  grid-column: span 2;
+}
+
+.projects__project .wp-block-cover__inner-container {
+  position: absolute;
+  bottom: 2rem;
+  left: 2rem;
+  width: 100%;
+  height: min-content;
+}
+.projects__project .wp-block-cover__inner-container * {
+  max-width: unset !important;
+}
+.projects__project img {
+  transition: 400ms ease-in-out;
+}
+.projects__project .wp-block-button {
+  position: relative;
+  z-index: 1;
+}
+.projects__project .wp-block-button:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background: white;
+  transition: 300ms ease-in-out;
+  z-index: 0;
+}
+.projects__project .wp-block-button .wp-block-button__link {
+  transition: 200ms ease-in-out;
+  position: relative;
+  z-index: 2;
+}
+.projects__project .wp-block-button:hover .wp-block-button__link {
+  border-color: white;
+  color: black;
+}
+.projects__project .wp-block-button:hover:after {
+  width: 100%;
+}
+.projects__project:hover img {
+  transform: scale(1.05);
+}
+
+/*
+- Style the projects [x]
+- Hover transion on button [x]
+- Hover transition on image [x]
+- 
+*/
+
+/*# sourceMappingURL=style.css.map*/
