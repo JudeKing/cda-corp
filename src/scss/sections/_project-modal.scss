@@ -18,7 +18,7 @@
         overflow: hidden;
 
         position: relative;
-        
+
     }
 
     .cda-project-modal__track-wrap {
@@ -28,24 +28,39 @@
         .cda-project-modal__track {
             display: flex;
             width: 100%;
-            transition: transform 0.45s ease;
+            // transition: transform 0.45s ease;
 
             .cda-project-modal__slide {
                 min-width: 100%;
                 box-sizing: border-box;
                 padding: 0 60px;
 
+                &.is-active {
+                    
+
+                    .wp-block-column {
+                        opacity: 1 !important;
+                    }
+                }
+
                 .wp-block-columns {
                     min-height: min-content;
                     gap: 10rem;
                     width: 100%;
 
+                    > :first-child {
+                        width: 100%;
+                        height: 60vh;
+                    }
+
                     .wp-block-column {
                         flex-grow: unset !important;
                         flex-basis: unset !important;
-                        &:first-child {
-                            width: 100%;
-                            height: 60vh;
+                        height: 100%;
+                        opacity: 0;
+                        transition: opacity 0.25s ease-in-out;
+
+
 
                             .wp-block-cover {
                                 height: 100%;
@@ -57,12 +72,14 @@
                                 }
                             }
 
-                                
-                        }
 
                         &:last-child {
                             width: 40%;
                         }
+                    }
+
+                    .cda-slide-image-wrapper {
+                        position: relative;
                     }
 
 
@@ -96,12 +113,12 @@
 
     
     .cda-project-modal__nav--prev {
-        left: 24px;
+        left: -4rem;
     }
 
     
     .cda-project-modal__nav--next {
-        right: 24px;
+        right: -4rem;
     }
 
 }

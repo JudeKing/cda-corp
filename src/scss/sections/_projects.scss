@@ -1,4 +1,8 @@
 @import './_project-modal.scss';
+@import './our-team.scss';
+@import './our-partners';
+@import './our-expertise';
+@import './contact';
 
 .projects__header-banner {
     padding: 1rem 0;
@@ -22,6 +26,7 @@
 }
 
 .projects__project {
+    cursor: pointer;
 
     .wp-block-cover__inner-container {
         position: absolute;

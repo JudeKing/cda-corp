@@ -13,6 +13,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function updateSlider() {
         track.style.transform = `translateX(-${currentSlide * 100}%)`;
+        const slides = track.querySelectorAll('.cda-project-modal__slide');
+
+        slides.forEach((slide, index) => {
+            slide.classList.toggle('is-active', index === currentSlide);
+        });
     }
 
     function openModal() {
@@ -34,9 +39,34 @@ document.addEventListener('DOMContentLoaded', () => {
         track.innerHTML = '';
 
         slides.forEach((slide) => {
+
             const slideItem = document.createElement('div');
             slideItem.className = 'cda-project-modal__slide';
-            slideItem.innerHTML = slide.outerHTML;
+
+            const slideClone = slide.cloneNode(true);
+
+            const imageCol = slideClone.querySelector('.wp-block-column:first-child');
+
+            if (imageCol) {
+
+                const wrapper = document.createElement('div');
+                wrapper.className = 'cda-slide-image-wrapper';
+
+                const prev = document.createElement('button');
+                prev.className = 'cda-project-modal__nav cda-project-modal__nav--prev';
+                prev.innerHTML = '‹';
+
+                const next = document.createElement('button');
+                next.className = 'cda-project-modal__nav cda-project-modal__nav--next';
+                next.innerHTML = '›';
+
+                imageCol.parentNode.insertBefore(wrapper, imageCol);
+                wrapper.appendChild(prev);
+                wrapper.appendChild(imageCol);
+                wrapper.appendChild(next);
+            }
+
+            slideItem.appendChild(slideClone);
             track.appendChild(slideItem);
         });
 
@@ -44,6 +74,20 @@ document.addEventListener('DOMContentLoaded', () => {
         currentSlide = 0;
         updateSlider();
     }
+
+    document.addEventListener('click', (e) => {
+
+        if (e.target.closest('.cda-project-modal__nav--next')) {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            updateSlider();
+        }
+
+        if (e.target.closest('.cda-project-modal__nav--prev')) {
+            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+            updateSlider();
+        }
+
+    });
 
     function openProjectFromPost(postEl) {
         const source = postEl.querySelector('.cda-project-source');

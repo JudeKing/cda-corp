@@ -1,0 +1,17 @@
+.partners-logo-carousel__track {
+    display: flex;
+    width: max-content;
+    gap: 40px;
+    align-items: center;
+    animation: partners-logo-scroll var(--scroll-speed) linear infinite;
+}
+
+
+@keyframes partners-logo-scroll {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-50%);
+    }
+}

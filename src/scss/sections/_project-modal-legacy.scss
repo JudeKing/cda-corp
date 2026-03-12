@@ -1,0 +1,139 @@
+.cda-project-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: rgba(245, 245, 245, 0.98);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+
+    &.is-open {
+        display: flex;
+    }
+
+    .cda-project-modal__inner {
+        width: 100%;
+        max-width: 1600px;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .cda-project-modal__track-wrap {
+        width: 100%;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .cda-project-modal__track {
+        position: relative;
+        width: 100%;
+        min-height: 60vh;
+    }
+
+    .cda-project-modal__slide {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        box-sizing: border-box;
+        padding: 0 60px;
+        transition: opacity 0.25s ease;
+
+        &.is-active {
+            position: relative;
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+            z-index: 2;
+        }
+
+        .wp-block-columns {
+            min-height: min-content;
+            gap: 10rem;
+            width: 100%;
+
+            > :first-child {
+                width: 100%;
+                height: 60vh;
+            }
+
+            .wp-block-column {
+                flex-grow: unset !important;
+                flex-basis: unset !important;
+                height: 100%;
+
+                .wp-block-cover {
+                    height: 100%;
+
+                    img {
+                        width: 100%;
+                        height: 100%;
+                        display: block;
+                        object-fit: cover;
+                    }
+                }
+
+                &:last-child {
+                    width: 40%;
+                }
+            }
+
+            .cda-slide-image-wrapper {
+                position: relative;
+            }
+        }
+    }
+
+    .cda-project-modal__close {
+        position: absolute;
+        top: 24px;
+        right: 24px;
+        background: none;
+        border: 0;
+        font-size: 48px;
+        cursor: pointer;
+        line-height: 1;
+    }
+
+    .cda-project-modal__nav {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: none;
+        border: 0;
+        font-size: 56px;
+        cursor: pointer;
+        line-height: 1;
+        z-index: 2;
+    }
+
+    .cda-project-modal__nav--prev {
+        left: -4rem;
+    }
+
+    .cda-project-modal__nav--next {
+        right: -4rem;
+    }
+}
+
+body.cda-project-modal-open {
+    overflow: hidden;
+}
+
+@media (max-width: 900px) {
+    .cda-project-modal {
+        padding: 20px;
+
+        .cda-project-modal__slide {
+            padding: 0 20px;
+
+            .wp-block-columns {
+                gap: 24px;
+                min-height: auto;
+            }
+        }
+    }
+}

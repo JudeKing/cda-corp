@@ -24,6 +24,10 @@ document.addEventListener('DOMContentLoaded', function () {
   var totalSlides = 0;
   function updateSlider() {
     track.style.transform = "translateX(-".concat(currentSlide * 100, "%)");
+    var slides = track.querySelectorAll('.cda-project-modal__slide');
+    slides.forEach(function (slide, index) {
+      slide.classList.toggle('is-active', index === currentSlide);
+    });
   }
   function openModal() {
     modal.classList.add('is-open');
@@ -43,13 +47,39 @@ document.addEventListener('DOMContentLoaded', function () {
     slides.forEach(function (slide) {
       var slideItem = document.createElement('div');
       slideItem.className = 'cda-project-modal__slide';
-      slideItem.innerHTML = slide.outerHTML;
+      var slideClone = slide.cloneNode(true);
+      var imageCol = slideClone.querySelector('.wp-block-column:first-child');
+      if (imageCol) {
+        var wrapper = document.createElement('div');
+        wrapper.className = 'cda-slide-image-wrapper';
+        var prev = document.createElement('button');
+        prev.className = 'cda-project-modal__nav cda-project-modal__nav--prev';
+        prev.innerHTML = '‹';
+        var next = document.createElement('button');
+        next.className = 'cda-project-modal__nav cda-project-modal__nav--next';
+        next.innerHTML = '›';
+        imageCol.parentNode.insertBefore(wrapper, imageCol);
+        wrapper.appendChild(prev);
+        wrapper.appendChild(imageCol);
+        wrapper.appendChild(next);
+      }
+      slideItem.appendChild(slideClone);
       track.appendChild(slideItem);
     });
     totalSlides = slides.length;
     currentSlide = 0;
     updateSlider();
   }
+  document.addEventListener('click', function (e) {
+    if (e.target.closest('.cda-project-modal__nav--next')) {
+      currentSlide = (currentSlide + 1) % totalSlides;
+      updateSlider();
+    }
+    if (e.target.closest('.cda-project-modal__nav--prev')) {
+      currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+      updateSlider();
+    }
+  });
   function openProjectFromPost(postEl) {
     var source = postEl.querySelector('.cda-project-source');
     if (!source) return;

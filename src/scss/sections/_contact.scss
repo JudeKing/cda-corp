@@ -1,0 +1,132 @@
+.cda__contact {
+    .wp-block-cover {
+        height: 100% !important;
+
+        .wp-block-cover__inner-container {
+
+            .wp-block-group {
+                width: 22rem;
+                padding: 2rem; 
+                
+                h2 {
+                    font-size: 1.6rem;
+                }
+            }
+        }
+    }
+
+    form {
+        width: 80% !important;
+
+        label {
+            color: black !important;
+        }
+
+        span {
+            color: black !important;
+        }
+
+        input {
+            border: none !important;
+            border-bottom: 1px solid black !important;
+        }
+
+        input:focus, textarea:focus, form:focus {
+            outline: none;
+        }
+
+        .select2-selection  {
+            border: none !important;
+            border-bottom: 1px solid black !important;
+            background: unset !important;
+        }
+
+        .dropdown-wrapper {
+            background: unset !important;
+        }
+
+
+    }
+}
+
+select, span, li {
+    outline: none !important;
+
+    &:focus {
+        background: unset !important;
+    }
+}
+
+.forminator-select-dropdown-container--open .forminator-custom-form-123.forminator-dropdown--default .select2-results .select2-results__options .select2-results__option.select2-results__option--selected {
+        background-color: unset !important;
+        color: black !important
+}
+
+.forminator-custom-form-123.forminator-calendar--default .ui-datepicker-header .ui-corner-all {
+    background-color: white !important;
+    color: black !important;
+}
+
+.forminator-select-dropdown-container--open .forminator-custom-form-123.forminator-dropdown--default {
+    border-color: inherit !important;
+}
+
+.forminator-select-dropdown {
+    background: white !important;
+
+    span {
+        &:focus {
+            outline: none !important;
+        }
+    }
+
+    li {
+        border: none !important;
+        outline: none !important;
+    }
+}
+
+.forminator-custom-form-123.forminator-calendar--default .ui-datepicker-calendar tbody td a.ui-state-default:active, .forminator-custom-form-123.forminator-calendar--default .ui-datepicker-calendar tbody td a.ui-state-default.ui-state-active {
+        outline: unset !important;
+
+        background: transparent !important;
+        color: inherit !important;
+        border-color: unset !important;
+}
+
+.ui-state-hover {
+    border: 0 !important;
+    outline: unset !important;
+}
+
+.ui-datepicker.forminator-calendar--default:before {
+    outline: unset !important;
+    border: 1px solid black !important;
+    background: white !important;
+}
+
+.forminator-custom-form-123.forminator-calendar--default .ui-datepicker-calendar tbody td a.ui-state-default.ui-state-highlight {
+    border-radius: 100%;
+    background: black !important;
+    color: white !important;
+    border: unset !important;
+    padding: 3px;
+}
+
+.forminator-custom-form-123.forminator-calendar--default .ui-datepicker-calendar tbody td a.ui-state-default {
+    background: white !important;
+    border: none !important;
+    border-radius: 100%;
+
+
+    &:hover {
+        background: #868686;
+    }
+}
+
+.forminator-button {
+    background: black !important;
+    color: white !important;
+    width: 100% !important;
+    font-size: 1.1rem !important;
+}

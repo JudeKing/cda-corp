@@ -1,0 +1,34 @@
+.cda__our-team {
+    .wp-block-column {
+        padding: 2rem !important;
+        padding-top: 5rem !important;
+        padding-bottom: 1rem !important;
+        position: relative;
+        background: white;
+        margin-top: 6rem;
+
+        h5 {
+            font-weight: 400;
+            margin-top: 0 !important;
+        }
+
+        figure {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%) translateY(-50%);
+
+            img {
+                box-shadow: 1px 1px 14px #bfbfbf;
+                border-radius: 100%;
+                border: 4px solid white;
+            }
+        }
+
+        svg {
+            width: 2rem;
+            height: min-content;
+
+        }
+    }
+}
