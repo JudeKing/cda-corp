@@ -1,6 +1,7 @@
 import '../scss/style.scss';
 import './carousel-modal';
 import './testimonial-slider';
+import './mobile-projects-nav';
 
 
 document.addEventListener('DOMContentLoaded', () => {

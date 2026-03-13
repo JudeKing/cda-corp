@@ -124,6 +124,7 @@
         font-size: 48px;
         cursor: pointer;
         line-height: 1;
+	    color: black !important;
 
         @media screen and (max-width: 600px) {
             background: white;
@@ -133,6 +134,10 @@
             padding: 0; 
             top: 0;
 
+        }
+
+        svg, path {
+	        fill: black !important;
         }
     }
 

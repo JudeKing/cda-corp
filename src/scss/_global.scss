@@ -10,7 +10,7 @@ html {
     scroll-behavior: smooth;
 }
 
-#about, #services, #projects, #contact {
+#about, #services, #projects, #contact, #corporate, #residential, #commercial, #retail {
     @media screen and (min-width: 980px) {
         scroll-margin-top: 140px; 
     }
