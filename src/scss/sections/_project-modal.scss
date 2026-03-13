@@ -8,6 +8,10 @@
     justify-content: center;
     padding: 40px;
 
+    @media screen and (max-width: 600px) {
+        overflow-y: auto;
+    }
+
     &.is-open {
         display: flex;
     }
@@ -35,6 +39,11 @@
                 box-sizing: border-box;
                 padding: 0 60px;
 
+                @media screen and (max-width: 600px){
+                    padding: 0 !important;
+                }
+                    
+
                 &.is-active {
                     
 
@@ -48,10 +57,21 @@
                     gap: 10rem;
                     width: 100%;
 
+                    @media screen and (max-width: 600px) {
+                        gap: 1rem !important;
+                    }
+                        
+
                     > :first-child {
                         width: 100%;
                         height: 60vh;
+
+                        @media screen and (max-width: 600px) {
+                             gap: 1rem !important;
+                            height: 50vh;
+                        }
                     }
+                        
 
                     .wp-block-column {
                         flex-grow: unset !important;
@@ -63,18 +83,25 @@
 
 
                             .wp-block-cover {
-                                height: 100%;
+                                min-height: 100% !important;
+
+                                    @media screen and (max-width: 600px) {
+                                    }
                                     img {
                                     width: 100%;
                                     height: 100%;
                                     display: block;
-                                    object-fit: cover;
+                                    object-fit: contain;
                                 }
                             }
 
 
                         &:last-child {
                             width: 40%;
+
+                            @media screen and (max-width: 600px) {
+                                width: 100%;
+                            }
                         }
                     }
 
@@ -97,6 +124,16 @@
         font-size: 48px;
         cursor: pointer;
         line-height: 1;
+
+        @media screen and (max-width: 600px) {
+            background: white;
+            z-index: 100;
+            width: 2rem !important;
+            height: 3rem;
+            padding: 0; 
+            top: 0;
+
+        }
     }
 
     .cda-project-modal__nav {
@@ -111,13 +148,46 @@
         z-index: 2;
     }
 
+    .cda-slide-image-wrapper {
+        .cda-testimonial-slider__arrow {
+            @media screen and (max-width: 600px) {
+                display: block;
+                z-index: 100;
+                top: 50%;
+                width: 2rem;
+                height: 2rem;
+                transform: translateY(-50%);
+                background-color: white !important; 
+
+                &--prev, &--next {
+
+                    span {
+                        border-color: black !important;
+                        width: 15px !important;
+                        height: 15px !important;
+                    }
+                }
+
+                &--prev {
+                    left: 0 !important;
+                }
+                
+                &--next {
+                    right: 0 !important;
+                }
+            }
+        }
+    }
+
+
+
     
-    .cda-project-modal__nav--prev {
+    .cda-testimonial-slider__arrow--prev {
         left: -4rem;
     }
 
     
-    .cda-project-modal__nav--next {
+    .cda-testimonial-slider__arrow--next {
         right: -4rem;
     }
 
@@ -125,6 +195,10 @@
 
 body.cda-project-modal-open {
     overflow: hidden;
+}
+
+.project-slide .cda-testimonial-slider__arrow span {
+    border-color: black !important;
 }
 
 @media (max-width: 900px) {

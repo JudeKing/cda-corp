@@ -145,3 +145,90 @@ function our_partners_logo_carousel_shortcode($atts) {
 }
 add_shortcode('our_partners_logo_carousel', 'our_partners_logo_carousel_shortcode');
 
+
+function cda_testimonial_slider_shortcode($atts) {
+    $atts = shortcode_atts([
+        'images' => '',
+        'quotes' => '',
+        'roles'  => '',
+        'names'  => '',
+        'stars'  => '5',
+        'height' => '520px',
+        'autoplay' => 'true',
+        'interval' => '5000',
+    ], $atts);
+
+    $images = array_map('trim', explode('|', $atts['images']));
+    $quotes = array_map('trim', explode('|', $atts['quotes']));
+    $roles  = array_map('trim', explode('|', $atts['roles']));
+    $names  = array_map('trim', explode('|', $atts['names']));
+
+    $count = min(count($images), count($quotes), count($roles), count($names));
+
+    if ($count === 0) {
+        return '<p>No testimonials added.</p>';
+    }
+
+    $uid = 'cda-testimonial-slider';
+
+    ob_start();
+    ?>
+    <div id="<?php echo esc_attr($uid); ?>" 
+         class="cda-testimonial-slider" 
+         data-autoplay="<?php echo esc_attr($atts['autoplay']); ?>" 
+         data-interval="<?php echo esc_attr($atts['interval']); ?>"
+         style="--cda-slider-height: <?php echo esc_attr($atts['height']); ?>;">
+
+        <div class="cda-testimonial-slider__track">
+            <?php for ($i = 0; $i < $count; $i++) : ?>
+                <div class="cda-testimonial-slider__slide <?php echo $i === 0 ? 'is-active' : ''; ?>">
+                    <div class="cda-testimonial-slider__bg">
+                        <img src="<?php echo esc_url($images[$i]); ?>" alt="">
+                    </div>
+
+                    <div class="cda-testimonial-slider__overlay-card">
+                        <div class="cda-testimonial-slider__stars">
+                            <?php for ($s = 0; $s < intval($atts['stars']); $s++) : ?>
+                                <span>★</span>
+                            <?php endfor; ?>
+                        </div>
+
+                        <blockquote class="cda-testimonial-slider__quote">
+                            "<?php echo esc_html($quotes[$i]); ?>"
+                        </blockquote>
+
+                        <div class="cda-testimonial-slider__role">
+                            — <?php echo esc_html($roles[$i]); ?>
+                        </div>
+
+                        <div class="cda-testimonial-slider__name">
+                            <?php echo esc_html($names[$i]); ?>
+                        </div>
+                    </div>
+                </div>
+            <?php endfor; ?>
+        </div>
+
+        <?php if ($count > 1) : ?>
+            <button class="cda-testimonial-slider__arrow cda-testimonial-slider__arrow--prev" type="button" aria-label="Previous testimonial">
+                <span></span>
+            </button>
+
+            <button class="cda-testimonial-slider__arrow cda-testimonial-slider__arrow--next" type="button" aria-label="Next testimonial">
+                <span></span>
+            </button>
+
+            <div class="cda-testimonial-slider__dots">
+                <?php for ($i = 0; $i < $count; $i++) : ?>
+                    <button class="cda-testimonial-slider__dot <?php echo $i === 0 ? 'is-active' : ''; ?>" type="button" data-index="<?php echo esc_attr($i); ?>" aria-label="Go to slide <?php echo esc_attr($i + 1); ?>"></button>
+                <?php endfor; ?>
+            </div>
+        <?php endif; ?>
+    </div>
+
+    <?php
+
+    return ob_get_clean();
+}
+add_shortcode('cda_testimonial_slider', 'cda_testimonial_slider_shortcode');
+

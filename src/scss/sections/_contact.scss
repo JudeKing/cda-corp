@@ -15,6 +15,17 @@
         }
     }
 
+    .wp-block-column {
+        @media screen and (max-width: 600px) {
+                display: flex;
+                justify-content: center;
+
+                * {
+                    text-align: left;
+                }
+        }
+    }
+
     form {
         width: 80% !important;
 
@@ -47,6 +58,8 @@
 
 
     }
+
+
 }
 
 select, span, li {

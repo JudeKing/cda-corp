@@ -53,12 +53,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 wrapper.className = 'cda-slide-image-wrapper';
 
                 const prev = document.createElement('button');
-                prev.className = 'cda-project-modal__nav cda-project-modal__nav--prev';
-                prev.innerHTML = '‹';
+                prev.className = 'cda-testimonial-slider__arrow cda-testimonial-slider__arrow--prev';
+                prev.type = 'button';
+                prev.setAttribute('aria-label', 'Previous slide');
+                prev.innerHTML = '<span></span>';
 
                 const next = document.createElement('button');
-                next.className = 'cda-project-modal__nav cda-project-modal__nav--next';
-                next.innerHTML = '›';
+                next.className = 'cda-testimonial-slider__arrow cda-testimonial-slider__arrow--next';
+                next.type = 'button';
+                next.setAttribute('aria-label', 'Next slide');
+                next.innerHTML = '<span></span>';
 
                 imageCol.parentNode.insertBefore(wrapper, imageCol);
                 wrapper.appendChild(prev);
@@ -77,12 +81,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.addEventListener('click', (e) => {
 
-        if (e.target.closest('.cda-project-modal__nav--next')) {
+        if (e.target.closest('.project-slide .cda-testimonial-slider__arrow--next')) {
             currentSlide = (currentSlide + 1) % totalSlides;
             updateSlider();
         }
 
-        if (e.target.closest('.cda-project-modal__nav--prev')) {
+        if (e.target.closest('.project-slide .cda-testimonial-slider__arrow--prev')) {
             currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
             updateSlider();
         }
@@ -149,5 +153,22 @@ document.addEventListener('DOMContentLoaded', () => {
         if (e.target === modal) {
             closeModal();
         }
+    });
+
+    document.querySelectorAll('.cda-project-modal__close').forEach(btn => {
+        btn.innerHTML = '';
+        btn.insertAdjacentHTML('beforeend', `
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+        <g>
+            <path d="M60 60l80 80M140 60l-80 80"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="10"
+                stroke-linecap="round"/>
+        </g>
+    </svg>
+        `);
+
+        btn.style.width = '4rem'
     });
 });

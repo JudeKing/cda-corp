@@ -53,11 +53,15 @@ document.addEventListener('DOMContentLoaded', function () {
         var wrapper = document.createElement('div');
         wrapper.className = 'cda-slide-image-wrapper';
         var prev = document.createElement('button');
-        prev.className = 'cda-project-modal__nav cda-project-modal__nav--prev';
-        prev.innerHTML = '‹';
+        prev.className = 'cda-testimonial-slider__arrow cda-testimonial-slider__arrow--prev';
+        prev.type = 'button';
+        prev.setAttribute('aria-label', 'Previous slide');
+        prev.innerHTML = '<span></span>';
         var next = document.createElement('button');
-        next.className = 'cda-project-modal__nav cda-project-modal__nav--next';
-        next.innerHTML = '›';
+        next.className = 'cda-testimonial-slider__arrow cda-testimonial-slider__arrow--next';
+        next.type = 'button';
+        next.setAttribute('aria-label', 'Next slide');
+        next.innerHTML = '<span></span>';
         imageCol.parentNode.insertBefore(wrapper, imageCol);
         wrapper.appendChild(prev);
         wrapper.appendChild(imageCol);
@@ -71,11 +75,11 @@ document.addEventListener('DOMContentLoaded', function () {
     updateSlider();
   }
   document.addEventListener('click', function (e) {
-    if (e.target.closest('.cda-project-modal__nav--next')) {
+    if (e.target.closest('.project-slide .cda-testimonial-slider__arrow--next')) {
       currentSlide = (currentSlide + 1) % totalSlides;
       updateSlider();
     }
-    if (e.target.closest('.cda-project-modal__nav--prev')) {
+    if (e.target.closest('.project-slide .cda-testimonial-slider__arrow--prev')) {
       currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
       updateSlider();
     }
@@ -132,6 +136,78 @@ document.addEventListener('DOMContentLoaded', function () {
       closeModal();
     }
   });
+  document.querySelectorAll('.cda-project-modal__close').forEach(function (btn) {
+    btn.innerHTML = '';
+    btn.insertAdjacentHTML('beforeend', "\n    <svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 200 200\">\n        <g>\n            <path d=\"M60 60l80 80M140 60l-80 80\"\n                fill=\"none\"\n                stroke=\"currentColor\"\n                stroke-width=\"10\"\n                stroke-linecap=\"round\"/>\n        </g>\n    </svg>\n        ");
+    btn.style.width = '4rem';
+  });
+});
+
+/***/ },
+
+/***/ "./src/js/testimonial-slider.js"
+/*!**************************************!*\
+  !*** ./src/js/testimonial-slider.js ***!
+  \**************************************/
+() {
+
+document.addEventListener('DOMContentLoaded', function () {
+  var slider = document.getElementById('cda-testimonial-slider');
+  console.log(slider);
+  if (!slider) return;
+  var slides = slider.querySelectorAll('.cda-testimonial-slider__slide');
+  var dots = slider.querySelectorAll('.cda-testimonial-slider__dot');
+  var prevBtn = slider.querySelector('.cda-testimonial-slider__arrow--prev');
+  var nextBtn = slider.querySelector('.cda-testimonial-slider__arrow--next');
+  var current = 0;
+  var timer = null;
+  var autoplay = slider.dataset.autoplay === 'true';
+  var interval = parseInt(slider.dataset.interval, 10) || 5000;
+  function goToSlide(index) {
+    slides[current].classList.remove('is-active');
+    if (dots[current]) dots[current].classList.remove('is-active');
+    current = (index + slides.length) % slides.length;
+    slides[current].classList.add('is-active');
+    if (dots[current]) dots[current].classList.add('is-active');
+  }
+  function nextSlide() {
+    goToSlide(current + 1);
+  }
+  function prevSlide() {
+    goToSlide(current - 1);
+  }
+  function startAutoplay() {
+    if (!autoplay || slides.length < 2) return;
+    stopAutoplay();
+    timer = setInterval(nextSlide, interval);
+  }
+  function stopAutoplay() {
+    if (timer) {
+      clearInterval(timer);
+      timer = null;
+    }
+  }
+  if (nextBtn) {
+    nextBtn.addEventListener('click', function () {
+      nextSlide();
+      startAutoplay();
+    });
+  }
+  if (prevBtn) {
+    prevBtn.addEventListener('click', function () {
+      prevSlide();
+      startAutoplay();
+    });
+  }
+  dots.forEach(function (dot) {
+    dot.addEventListener('click', function () {
+      goToSlide(parseInt(this.dataset.index, 10));
+      startAutoplay();
+    });
+  });
+  slider.addEventListener('mouseenter', stopAutoplay);
+  slider.addEventListener('mouseleave', startAutoplay);
+  startAutoplay();
 });
 
 /***/ },
@@ -234,8 +310,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _scss_style_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../scss/style.scss */ "./src/scss/style.scss");
 /* harmony import */ var _carousel_modal__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./carousel-modal */ "./src/js/carousel-modal.js");
 /* harmony import */ var _carousel_modal__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_carousel_modal__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _testimonial_slider__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./testimonial-slider */ "./src/js/testimonial-slider.js");
+/* harmony import */ var _testimonial_slider__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_testimonial_slider__WEBPACK_IMPORTED_MODULE_2__);
 
 
+
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('.btn-with-arrow a').forEach(function (btn) {
+    btn.innerHTML += "\n    <svg data-bbox=\"9 70.9 181 59\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 200 200\">\n        <g>\n            <path d=\"M159 70.9l-2.2 2.4L183.6 99H9v3h174.6l-26.2 25.3 2.1 2.6 30.5-29.3-31-29.7z\"></path>\n        </g>\n    </svg>";
+  });
+});
 })();
 
 /******/ })()

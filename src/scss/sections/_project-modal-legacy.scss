@@ -55,6 +55,11 @@
             gap: 10rem;
             width: 100%;
 
+            @media screen and (max-width: 600px) {
+                justify-content: unset !important;
+            }
+                
+
             > :first-child {
                 width: 100%;
                 height: 60vh;
@@ -122,6 +127,8 @@
 body.cda-project-modal-open {
     overflow: hidden;
 }
+
+
 
 @media (max-width: 900px) {
     .cda-project-modal {

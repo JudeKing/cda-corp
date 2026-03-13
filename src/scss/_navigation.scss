@@ -1,0 +1,113 @@
+.cda__footer {
+
+
+    @media screen and (max-width: 600px) {
+        * {
+            justify-content: center;;
+            text-align: center;
+            align-items: center;
+        }
+
+        .cda__socials-icons {
+            flex-direction: column-reverse;
+
+            .wp-block-columns {
+                flex-direction: row;
+                flex-wrap: nowrap !important;
+            }
+
+            p {
+                margin-bottom: 1rem;
+            }
+        }
+    }
+
+
+    .cda__footer-meta {
+        
+        .cda__footer-meta-wrapper {
+
+
+            @media screen and (min-width: 940px) {
+
+                .wp-block-column:first-child {
+                    margin-right: 10vw;
+                    flex-grow: 2 !important;
+                }
+
+                .wp-block-column .wp-block-columns .wp-block-column {
+                    margin-right: unset;
+                    flex-grow: 1 !important;
+                }
+            }
+
+            form {
+                color: white;
+
+                label {
+                    font-size: 1rem !important;
+                    font-weight: 400 !important;
+                }
+                input {
+                    background: transparent;
+                    border-radius: 1px;
+                }
+
+                .forminator-checkbox-box {
+                color: white !important;
+                background: black !important;
+                border-color: white !important;
+                }
+
+                button {
+                    background: white !important;
+                    color: black !important;
+                }
+            }
+        }
+    }
+}
+
+
+.cda__header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    background: white;
+
+    .cda__header-container {
+        color: black;
+
+        .cda__header-nav-wrapper {
+            // justify-content: space-around !important;
+
+            .wp-block-navigation__container {
+                    gap: 0rem;
+                    flex-wrap: nowrap;
+            }
+
+            nav {
+                gap: 2rem;
+
+                a {
+                    padding: 1rem 2.5rem;
+                    font-weight: 600;
+                    transition: 200ms ease-in-out;
+
+                    &:hover {
+                        background: black;
+                        color: white;
+                    }
+                }
+            }
+        }
+
+        .wp-block-site-logo {
+            @media screen and (max-width: 600px) {
+                display: none;
+            }
+        }
+    }
+}

@@ -6,6 +6,91 @@
     width: 100%;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
+#about, #services, #projects, #contact {
+    @media screen and (min-width: 980px) {
+        scroll-margin-top: 140px; 
+    }
+}
+
 .cda__container.cda__container-spacer {
     margin-top: 10vh;
+}
+
+@media screen and (max-width: 600px) {
+    *:not(label) {
+        text-align: center;
+        // justify-content: center !important;
+    }
+
+    .wp-block-buttons {
+        justify-content: center !important;
+    }
+}
+
+.cda__banner {
+
+    .wp-block-cover {
+
+        @media screen and (max-width: 600px) {
+            min-height: 80vh !important;
+        }
+    }
+
+    .cda__banner-logo {
+        display: none;
+    }
+
+    @media screen and (max-width: 600px) {
+
+        .cda__banner-logo {
+            display: block;
+            width: 60vw !important;
+        }
+        h2 {
+            font-size: 1.5rem !important; 
+        }
+
+        p {
+            display: none;
+        }
+    }
+
+}
+
+.btn-with-arrow a {
+    display: flex;
+    align-items: center;
+    padding: 0 1rem;
+    transition: 200ms ease-in-out;
+
+    svg { 
+        width: 3rem;
+        fill: white;
+        margin-top: 5px;
+            transition: 200ms ease-in-out;
+    }
+
+
+    &:hover {
+        background-color: white !important;
+        color: black;
+
+
+        svg {
+            fill: black;
+        }
+    }
+}
+
+
+.cda__general-btn a {
+    transition: 200ms ease-in-out;
+    &:hover {
+        background-color: white !important;
+        color: black !important
+    }
 }

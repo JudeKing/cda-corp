@@ -1,4 +1,12 @@
 .cda__our-team {
+
+    .wp-block-columns {
+        @media screen and (max-width: 970px) {
+            flex-direction: column;
+        }
+    }
+
+
     .wp-block-column {
         padding: 2rem !important;
         padding-top: 5rem !important;
@@ -6,6 +14,17 @@
         position: relative;
         background: white;
         margin-top: 6rem;
+
+        @media screen and (max-width: 980px) {
+
+            * {
+                margin-left: 0 !important;
+                margin-right: 0 !important;
+            }
+        }
+
+
+
 
         h5 {
             font-weight: 400;

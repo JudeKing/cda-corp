@@ -4,7 +4,26 @@
         width: 5rem;
     }
 
-    .wp-block-column {
-        padding: 3rem 7rem !important;
+    .wp-block-columns {
+        @media screen and (max-width: 970px ) {
+            flex-direction: column;
+
+            &:last-child {
+                flex-direction: column-reverse;
+            }
+        }
     }
+
+    .wp-block-column {
+        padding: 3rem 2rem !important;
+
+        @media screen and (max-width: 600px ) {
+            flex-direction: column;
+
+        }
+
+
+    }
+
+    
 }

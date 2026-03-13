@@ -9,8 +9,75 @@
   width: 100%;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
+@media screen and (min-width: 980px) {
+  #about, #services, #projects, #contact {
+    scroll-margin-top: 140px;
+  }
+}
+
 .cda__container.cda__container-spacer {
   margin-top: 10vh;
+}
+
+@media screen and (max-width: 600px) {
+  *:not(label) {
+    text-align: center;
+  }
+  .wp-block-buttons {
+    justify-content: center !important;
+  }
+}
+@media screen and (max-width: 600px) {
+  .cda__banner .wp-block-cover {
+    min-height: 80vh !important;
+  }
+}
+.cda__banner .cda__banner-logo {
+  display: none;
+}
+@media screen and (max-width: 600px) {
+  .cda__banner .cda__banner-logo {
+    display: block;
+    width: 60vw !important;
+  }
+  .cda__banner h2 {
+    font-size: 1.5rem !important;
+  }
+  .cda__banner p {
+    display: none;
+  }
+}
+
+.btn-with-arrow a {
+  display: flex;
+  align-items: center;
+  padding: 0 1rem;
+  transition: 200ms ease-in-out;
+}
+.btn-with-arrow a svg {
+  width: 3rem;
+  fill: white;
+  margin-top: 5px;
+  transition: 200ms ease-in-out;
+}
+.btn-with-arrow a:hover {
+  background-color: white !important;
+  color: black;
+}
+.btn-with-arrow a:hover svg {
+  fill: black;
+}
+
+.cda__general-btn a {
+  transition: 200ms ease-in-out;
+}
+.cda__general-btn a:hover {
+  background-color: white !important;
+  color: black !important;
 }
 
 .cda-project-modal {
@@ -22,6 +89,11 @@
   align-items: center;
   justify-content: center;
   padding: 40px;
+}
+@media screen and (max-width: 600px) {
+  .cda-project-modal {
+    overflow-y: auto;
+  }
 }
 .cda-project-modal.is-open {
   display: flex;
@@ -45,6 +117,11 @@
   box-sizing: border-box;
   padding: 0 60px;
 }
+@media screen and (max-width: 600px) {
+  .cda-project-modal .cda-project-modal__track-wrap .cda-project-modal__track .cda-project-modal__slide {
+    padding: 0 !important;
+  }
+}
 .cda-project-modal .cda-project-modal__track-wrap .cda-project-modal__track .cda-project-modal__slide.is-active .wp-block-column {
   opacity: 1 !important;
 }
@@ -53,9 +130,20 @@
   gap: 10rem;
   width: 100%;
 }
+@media screen and (max-width: 600px) {
+  .cda-project-modal .cda-project-modal__track-wrap .cda-project-modal__track .cda-project-modal__slide .wp-block-columns {
+    gap: 1rem !important;
+  }
+}
 .cda-project-modal .cda-project-modal__track-wrap .cda-project-modal__track .cda-project-modal__slide .wp-block-columns > :first-child {
   width: 100%;
   height: 60vh;
+}
+@media screen and (max-width: 600px) {
+  .cda-project-modal .cda-project-modal__track-wrap .cda-project-modal__track .cda-project-modal__slide .wp-block-columns > :first-child {
+    gap: 1rem !important;
+    height: 50vh;
+  }
 }
 .cda-project-modal .cda-project-modal__track-wrap .cda-project-modal__track .cda-project-modal__slide .wp-block-columns .wp-block-column {
   flex-grow: unset !important;
@@ -65,16 +153,21 @@
   transition: opacity 0.25s ease-in-out;
 }
 .cda-project-modal .cda-project-modal__track-wrap .cda-project-modal__track .cda-project-modal__slide .wp-block-columns .wp-block-column .wp-block-cover {
-  height: 100%;
+  min-height: 100% !important;
 }
 .cda-project-modal .cda-project-modal__track-wrap .cda-project-modal__track .cda-project-modal__slide .wp-block-columns .wp-block-column .wp-block-cover img {
   width: 100%;
   height: 100%;
   display: block;
-  object-fit: cover;
+  object-fit: contain;
 }
 .cda-project-modal .cda-project-modal__track-wrap .cda-project-modal__track .cda-project-modal__slide .wp-block-columns .wp-block-column:last-child {
   width: 40%;
+}
+@media screen and (max-width: 600px) {
+  .cda-project-modal .cda-project-modal__track-wrap .cda-project-modal__track .cda-project-modal__slide .wp-block-columns .wp-block-column:last-child {
+    width: 100%;
+  }
 }
 .cda-project-modal .cda-project-modal__track-wrap .cda-project-modal__track .cda-project-modal__slide .wp-block-columns .cda-slide-image-wrapper {
   position: relative;
@@ -89,6 +182,16 @@
   cursor: pointer;
   line-height: 1;
 }
+@media screen and (max-width: 600px) {
+  .cda-project-modal .cda-project-modal__close {
+    background: white;
+    z-index: 100;
+    width: 2rem !important;
+    height: 3rem;
+    padding: 0;
+    top: 0;
+  }
+}
 .cda-project-modal .cda-project-modal__nav {
   position: absolute;
   top: 50%;
@@ -100,15 +203,41 @@
   line-height: 1;
   z-index: 2;
 }
-.cda-project-modal .cda-project-modal__nav--prev {
+@media screen and (max-width: 600px) {
+  .cda-project-modal .cda-slide-image-wrapper .cda-testimonial-slider__arrow {
+    display: block;
+    z-index: 100;
+    top: 50%;
+    width: 2rem;
+    height: 2rem;
+    transform: translateY(-50%);
+    background-color: white !important;
+  }
+  .cda-project-modal .cda-slide-image-wrapper .cda-testimonial-slider__arrow--prev span, .cda-project-modal .cda-slide-image-wrapper .cda-testimonial-slider__arrow--next span {
+    border-color: black !important;
+    width: 15px !important;
+    height: 15px !important;
+  }
+  .cda-project-modal .cda-slide-image-wrapper .cda-testimonial-slider__arrow--prev {
+    left: 0 !important;
+  }
+  .cda-project-modal .cda-slide-image-wrapper .cda-testimonial-slider__arrow--next {
+    right: 0 !important;
+  }
+}
+.cda-project-modal .cda-testimonial-slider__arrow--prev {
   left: -4rem;
 }
-.cda-project-modal .cda-project-modal__nav--next {
+.cda-project-modal .cda-testimonial-slider__arrow--next {
   right: -4rem;
 }
 
 body.cda-project-modal-open {
   overflow: hidden;
+}
+
+.project-slide .cda-testimonial-slider__arrow span {
+  border-color: black !important;
 }
 
 @media (max-width: 900px) {
@@ -123,6 +252,11 @@ body.cda-project-modal-open {
     min-height: auto;
   }
 }
+@media screen and (max-width: 970px) {
+  .cda__our-team .wp-block-columns {
+    flex-direction: column;
+  }
+}
 .cda__our-team .wp-block-column {
   padding: 2rem !important;
   padding-top: 5rem !important;
@@ -130,6 +264,12 @@ body.cda-project-modal-open {
   position: relative;
   background: white;
   margin-top: 6rem;
+}
+@media screen and (max-width: 980px) {
+  .cda__our-team .wp-block-column * {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
 }
 .cda__our-team .wp-block-column h5 {
   font-weight: 400;
@@ -170,8 +310,21 @@ body.cda-project-modal-open {
 .cda__expertise img {
   width: 5rem;
 }
+@media screen and (max-width: 970px) {
+  .cda__expertise .wp-block-columns {
+    flex-direction: column;
+  }
+  .cda__expertise .wp-block-columns:last-child {
+    flex-direction: column-reverse;
+  }
+}
 .cda__expertise .wp-block-column {
-  padding: 3rem 7rem !important;
+  padding: 3rem 2rem !important;
+}
+@media screen and (max-width: 600px) {
+  .cda__expertise .wp-block-column {
+    flex-direction: column;
+  }
 }
 
 .cda__contact .wp-block-cover {
@@ -183,6 +336,15 @@ body.cda-project-modal-open {
 }
 .cda__contact .wp-block-cover .wp-block-cover__inner-container .wp-block-group h2 {
   font-size: 1.6rem;
+}
+@media screen and (max-width: 600px) {
+  .cda__contact .wp-block-column {
+    display: flex;
+    justify-content: center;
+  }
+  .cda__contact .wp-block-column * {
+    text-align: left;
+  }
 }
 .cda__contact form {
   width: 80% !important;
@@ -286,6 +448,26 @@ select:focus, span:focus, li:focus {
 .projects__header-banner {
   padding: 1rem 0;
 }
+.projects__header-banner h2 {
+  font-weight: 400;
+}
+@media screen and (max-width: 960px) {
+  .projects__header-banner h2 {
+    font-size: 1.5rem;
+  }
+  .projects__header-banner .wp-block-column:last-child {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .projects__container-grid .wp-block-query ul {
+    grid-template-columns: 1fr !important;
+  }
+  .projects__container-grid .wp-block-query ul li {
+    grid-column: span 1 !important;
+  }
+}
 
 .projects__container-grid-1 .wp-block-query ul {
   display: grid;
@@ -302,6 +484,51 @@ select:focus, span:focus, li:focus {
   grid-column: span 2;
 }
 
+.projects__container-grid-2 .wp-block-query ul {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.5rem;
+}
+.projects__container-grid-2 .wp-block-query ul li {
+  margin-top: 0 !important;
+}
+.projects__container-grid-2 {
+  /* full width rows */
+}
+.projects__container-grid-2 .wp-block-query ul > :nth-child(6n+1),
+.projects__container-grid-2 .wp-block-query ul > :nth-child(6n+6) {
+  grid-column: span 2;
+}
+
+.projects__container-grid-3 .wp-block-query ul {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.5rem;
+}
+.projects__container-grid-3 .wp-block-query ul li {
+  margin-top: 0 !important;
+}
+
+.projects__container-grid-4 .wp-block-query ul {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 0.5rem;
+}
+.projects__container-grid-4 .wp-block-query ul li {
+  margin-top: 0 !important;
+}
+
+.projects__project:after {
+  content: "";
+  position: absolute;
+  background: black;
+  opacity: 0.3;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
 .projects__project {
   cursor: pointer;
 }
@@ -311,9 +538,20 @@ select:focus, span:focus, li:focus {
   left: 2rem;
   width: 100%;
   height: min-content;
+  z-index: 10;
+}
+@media screen and (max-width: 600px) {
+  .projects__project .wp-block-cover__inner-container {
+    bottom: 50%;
+    left: 50%;
+    transform: translate(-50%, 50%);
+  }
 }
 .projects__project .wp-block-cover__inner-container * {
   max-width: unset !important;
+}
+.projects__project .wp-block-cover__inner-container .is-acf-field .value {
+  font-weight: 600;
 }
 .projects__project .cda-project-source {
   display: none;
@@ -358,5 +596,251 @@ select:focus, span:focus, li:focus {
 - Hover transition on image [x]
 - 
 */
+@media screen and (max-width: 600px) {
+  .cda__footer * {
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+  }
+  .cda__footer .cda__socials-icons {
+    flex-direction: column-reverse;
+  }
+  .cda__footer .cda__socials-icons .wp-block-columns {
+    flex-direction: row;
+    flex-wrap: nowrap !important;
+  }
+  .cda__footer .cda__socials-icons p {
+    margin-bottom: 1rem;
+  }
+}
+@media screen and (min-width: 940px) {
+  .cda__footer .cda__footer-meta .cda__footer-meta-wrapper .wp-block-column:first-child {
+    margin-right: 10vw;
+    flex-grow: 2 !important;
+  }
+  .cda__footer .cda__footer-meta .cda__footer-meta-wrapper .wp-block-column .wp-block-columns .wp-block-column {
+    margin-right: unset;
+    flex-grow: 1 !important;
+  }
+}
+.cda__footer .cda__footer-meta .cda__footer-meta-wrapper form {
+  color: white;
+}
+.cda__footer .cda__footer-meta .cda__footer-meta-wrapper form label {
+  font-size: 1rem !important;
+  font-weight: 400 !important;
+}
+.cda__footer .cda__footer-meta .cda__footer-meta-wrapper form input {
+  background: transparent;
+  border-radius: 1px;
+}
+.cda__footer .cda__footer-meta .cda__footer-meta-wrapper form .forminator-checkbox-box {
+  color: white !important;
+  background: black !important;
+  border-color: white !important;
+}
+.cda__footer .cda__footer-meta .cda__footer-meta-wrapper form button {
+  background: white !important;
+  color: black !important;
+}
+
+.cda__header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  background: white;
+}
+.cda__header .cda__header-container {
+  color: black;
+}
+.cda__header .cda__header-container .cda__header-nav-wrapper .wp-block-navigation__container {
+  gap: 0rem;
+  flex-wrap: nowrap;
+}
+.cda__header .cda__header-container .cda__header-nav-wrapper nav {
+  gap: 2rem;
+}
+.cda__header .cda__header-container .cda__header-nav-wrapper nav a {
+  padding: 1rem 2.5rem;
+  font-weight: 600;
+  transition: 200ms ease-in-out;
+}
+.cda__header .cda__header-container .cda__header-nav-wrapper nav a:hover {
+  background: black;
+  color: white;
+}
+@media screen and (max-width: 600px) {
+  .cda__header .cda__header-container .wp-block-site-logo {
+    display: none;
+  }
+}
+
+.cda-testimonial-slider {
+  position: relative;
+  width: 100%;
+  height: var(--cda-slider-height);
+  overflow: hidden;
+}
+
+.cda-testimonial-slider__track,
+.cda-testimonial-slider__slide {
+  width: 100%;
+  height: 100%;
+}
+
+.cda-testimonial-slider__slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.6s ease, visibility 0.6s ease;
+}
+
+.cda-testimonial-slider__slide.is-active {
+  opacity: 1;
+  visibility: visible;
+  z-index: 2;
+}
+
+.cda-testimonial-slider__bg {
+  position: absolute;
+  inset: 0;
+}
+
+.cda-testimonial-slider__bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.cda-testimonial-slider__overlay-card {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: min(90%, 490px);
+  background: rgba(245, 245, 245, 0.96);
+  text-align: center;
+  padding: 36px 34px 26px;
+  z-index: 3;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.cda-testimonial-slider__stars {
+  margin-bottom: 18px;
+  color: #555;
+  font-size: 16px;
+  line-height: 1;
+  letter-spacing: 2px;
+  display: flex;
+  justify-content: center;
+}
+
+.cda-testimonial-slider__quote {
+  margin: 0 0 18px;
+  color: #666;
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+.cda-testimonial-slider__role {
+  color: #666;
+  font-size: 17px;
+  margin-bottom: 14px;
+}
+
+.cda-testimonial-slider__name {
+  color: #666;
+  font-size: 15px;
+}
+
+.cda-testimonial-slider__arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 5;
+  width: 52px;
+  height: 52px;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+}
+
+.cda-testimonial-slider__arrow--prev {
+  left: 22px;
+}
+
+.cda-testimonial-slider__arrow--next {
+  right: 22px;
+}
+
+.cda-testimonial-slider__arrow span {
+  display: block;
+  width: 22px;
+  height: 22px;
+  margin: 0 auto;
+  border-top: 2px solid #fff;
+  border-right: 2px solid #fff;
+}
+
+.cda-testimonial-slider__arrow--prev span {
+  transform: rotate(-135deg);
+}
+
+.cda-testimonial-slider__arrow--next span {
+  transform: rotate(45deg);
+}
+
+.cda-testimonial-slider__dots {
+  position: absolute;
+  left: 50%;
+  bottom: 16px;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  z-index: 5;
+}
+
+.cda-testimonial-slider__dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  border: 0;
+  background: rgba(255, 255, 255, 0.6);
+  padding: 0;
+  cursor: pointer;
+}
+
+.cda-testimonial-slider__dot.is-active {
+  background: #fff;
+}
+
+@media (max-width: 767px) {
+  .cda-testimonial-slider {
+    height: 420px;
+  }
+  .cda-testimonial-slider__overlay-card {
+    width: min(92%, 420px);
+    padding: 28px 22px 22px;
+  }
+  .cda-testimonial-slider__quote {
+    font-size: 16px;
+  }
+  .cda-testimonial-slider__arrow {
+    width: 42px;
+    height: 42px;
+    display: none;
+  }
+  .cda-testimonial-slider__arrow--prev {
+    left: 8px;
+  }
+  .cda-testimonial-slider__arrow--next {
+    right: 8px;
+  }
+}
 
 /*# sourceMappingURL=style.css.map*/
